@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>TicTacToe</title>
+  <link rel="stylesheet" href="css/style.css" media="screen" title="no title">
+  <script src="//code.jquery.com/jquery-1.12.0.min.js"></script>
+</head>
+<body>
+  <h1>TicTacToe</h1>
+  <div class="player-login">
+    <input type="text" id="player-nickname" placeholder="nickname">
+    <button type="submit" id="btn">Play</button>
+    <p class="error">Invalid Nickname</p>
+  </div>
+
+  <div class="players">
+    <h3>Jugador 1: </h3><h3 class="player">Player 1</h3>
+    <h3>jugador 2: </h3><h3 class="second-player">Player 2</h3>
+    <br>
+    <div class="invalid-move">
+      <p>It´s not your turn</p>
+    </div>
+    <p class="result"></p>
+  </div>
+
+  <container id="board" class="board">
+    	<div class="square" id="celda1"></div>
+    	<div class="square" id="celda2"></div>
+    	<div class="square" id="celda3"></div>
+    	<div class="square" id="celda4"></div>
+    	<div class="square" id="celda5"></div>
+    	<div class="square" id="celda6"></div>
+    	<div class="square" id="celda7"></div>
+    	<div class="square" id="celda8"></div>
+    	<div class="square" id="celda9"></div>
+	</container>
+
+<script src="/socket.io/socket.io.js"></script>
+<script type="text/javascript" src="js/script.js"></script>
+</body>
+</html>

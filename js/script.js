@@ -57,12 +57,12 @@ $( document ).ready(function() {
 
       if ( validMove ) {
         //move.text( opcion);
-        board.makeMove( move, opcion );
+        Board.makeMove( move, opcion );
         var selectedCell = move.attr( "id" );
         var type = opcion;
         socket.emit( 'move', {id:secondPlayerId, move: selectedCell, type:type} );
         isMyTurn = false;
-        board.verifyResults();
+        Board.verifyResults();
       }else{
         $(".invalid-move").text("Invalid Move");
         $(".invalid-move").show();
@@ -83,7 +83,7 @@ $( document ).ready(function() {
     var secondPlayerMove = $( "#"+data.move );
     var option = data.type;
 
-    board.makeMove( secondPlayerMove, option );
+    Board.makeMove( secondPlayerMove, option );
   } );
 
   socket.on( 'notify no winners', function( data ) {
@@ -91,14 +91,14 @@ $( document ).ready(function() {
   } );
 
 
+  var notifyNoWinners = function() {
+    $( '.result' ).text( 'No winners :D' );
+  }
 
 
 
-});
 
-var notifyNoWinners = function() {
-  $( '.result' ).text( 'No winners :D' );
-}
+
 
 var Board = new function() {
 
@@ -116,7 +116,12 @@ var Board = new function() {
 
   this.verifyResults = function() {
     if ( positions.length == 0 ) {
-      notifyNoWinners();
+      //notifyNoWinners();
+      socket.emit( 'no winners', {id:secondPlayerId}, function( data ) {
+        notifyNoWinners();
+      } );
     }
     }
   };
+
+  });

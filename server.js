@@ -60,9 +60,9 @@ io.on('connection', function(socket){
     users.splice(users.indexOf(socket.user),1);
   });
 
-  socket.on( 'no winners', function( id, callback ) {
+  socket.on( 'no winners', function( data, callback ) {
     callback( true );
-    socket.broadcast.to( id ).emit( 'notify no winners', {id:id} );
+    socket.broadcast.to( data.id ).emit( 'notify no winners', {id:data.id} );
   } );
 
 

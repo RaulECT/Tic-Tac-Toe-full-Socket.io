@@ -90,7 +90,23 @@ $( document ).ready(function() {
     notifyNoWinners();
   } );
 
+  socket.on( 'you lose', function( data ) {
+    $( '.result' ).text( 'You lost D:' )
+  } );
 
+  var notifyFirstPlayerWon = function() {
+
+    socket.emit( 'first player won', {id:secondPlayerId}, function( data ) {
+      $( '.result' ).text( 'You won :D' )
+    } );
+
+  }
+
+  var notifySecondPlayerWon = function() {
+    socket.emit( 'second player won', {id:secondPlayer}, function() {
+      $( '.result' ).text( 'You won :D' )
+    } );
+  }
 
   var newGame = function() {
     $( ".result" ).text( '' );
@@ -135,8 +151,67 @@ var Board = new function() {
       socket.emit( 'no winners', {id:secondPlayerId}, function( data ) {
         notifyNoWinners();
       } );
+    }else if ( $( "#celda1, #celda2, #celda3" ).text()=="XXX" ) {
+      $( "#celda1, #celda2, #celda3" ).addClass( "square-winner" );
+      notifyFirstPlayerWon();
+
+    }else if($("#celda4, #celda5, #celda6").text()=="XXX"){
+      $("#celda4, #celda5, #celda6").addClass( 'square-winner' );
+      notifyFirstPlayerWon();
+    }
+    else if($("#celda4, #celda5, #celda6").text()=="OOO"){
+      $("#celda4, #celda5, #celda6").addClass( 'square-winner' );
+      notifySecondPlayerWon();
+    }
+    else if($("#celda7, #celda8, #celda9").text()=="XXX"){
+      $("#celda7, #celda8, #celda9").addClass( 'square-winner' );
+      notifyFirstPlayerWon();
+    }
+    else if($("#celda7, #celda8, #celda9").text()=="OOO"){
+      $("#celda7, #celda8, #celda9").addClass( 'square-winner' );
+      notifySecondPlayerWon();
+    }
+    else if($("#celda1, #celda4, #celda7").text()=="XXX"){
+      $("#celda1, #celda4, #celda7").addClass( 'square-winner' );
+      notifyFirstPlayerWon();
+    }
+    else if($("#celda1, #celda4, #celda7").text()=="OOO"){
+      $("#celda1, #celda4, #celda7").addClass( 'square-winner' );
+      notifySecondPlayerWon();
+    }
+    else if($("#celda2, #celda5, #celda8").text()=="XXX"){
+      $("#celda2, #celda5, #celda8").addClass( 'square-winner' );
+      notifyFirstPlayerWon();
+    }
+    else if($("#celda2, #celda5, #celda8").text()=="OOO"){
+      $("#celda2, #celda5, #celda8").addClass( 'square-winner' );
+      notifySecondPlayerWon();
+    }
+    else if($("#celda3, #celda6, #celda9").text()=="XXX"){
+      $("#celda3, #celda6, #celda9").addClass( 'square-winner' );
+      notifyFirstPlayerWon();
+    }
+    else if($("#celda3, #celda6, #celda9").text()=="OOO"){
+      $("#celda3, #celda6, #celda9").addClass( 'square-winner' );
+      notifySecondPlayerWon();
+    }
+    else if($("#celda1, #celda5, #celda9").text()=="XXX"){
+      $("#celda1, #celda5, #celda9").addClass( 'square-winner' );
+      notifyFirstPlayerWon();
+    }
+    else if($("#celda1, #celda5, #celda9").text()=="OOO"){
+      $("#celda1, #celda5, #celda9").addClass( 'square-winner' );
+      notifySecondPlayerWon();
+    }
+    else if($("#celda3, #celda5, #celda7").text()=="XXX"){
+      $("#celda3, #celda5, #celda7").addClass( 'square-winner' );
+      notifyFirstPlayerWon();
+    }
+    else if($("#celda3, #celda5, #celda7").text()=="OOO"){
+      $("#celda3, #celda5, #celda7").addClass( 'square-winner' );
+      notifySecondPlayerWon();
     }
     }
   };
 
-  });
+});

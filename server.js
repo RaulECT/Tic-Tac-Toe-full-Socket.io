@@ -65,5 +65,15 @@ io.on('connection', function(socket){
     socket.broadcast.to( data.id ).emit( 'notify no winners', {id:data.id} );
   } );
 
+  socket.on( 'first player won', function( data, callback ) {
+    callback( true );
+    socket.broadcast.to( data.id ).emit( 'you lose', {id:data.id} );
+  } );
+
+  socket.on( 'second player won', function( data, callback ) {
+    callback( true );
+    socket.broadcast.to( data.id ).emit( 'you lose', {id:data.id} );
+  } );
+
 
 });

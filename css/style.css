@@ -151,6 +151,11 @@ form {
 
 }
 
+.square-winner{
+  background: #f16272;
+  color: white;
+}
+
 #_1, #_2, #_4, #_5 {
   border-bottom: 2px solid #ccc;
   border-right: 2px solid #aaa;

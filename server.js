@@ -11,8 +11,8 @@ var usersData = [];
 app.use("/css", express.static(__dirname + '/css'));
 app.use("/js", express.static(__dirname + '/js'));
 
-server.listen(3000, function(){
-  console.log("Running on port 3000");
+server.listen(80, function(){
+  console.log("Running on port 80");
 })
 
 var io = socket.listen(server);

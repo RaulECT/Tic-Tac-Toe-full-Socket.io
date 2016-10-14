@@ -15,7 +15,7 @@ $( document ).ready(function() {
   var board = Board;
 
   buttonPlay.on( "click", function() {
-    socket.emit( 'new user', userNickname.val(), function( data ) {
+    socket.emit( 'new user', userNickname.val() + "  ", function( data ) {
       if ( data ) {
         $( ".player-login" ).hide();
         $( ".player" ).text( userNickname.val() );
@@ -92,6 +92,7 @@ $( document ).ready(function() {
 
   socket.on( 'you lose', function( data ) {
     $( '.result' ).text( 'You lost D:' )
+    setTimeout( newGame, 1500 );
   } );
 
   var notifyFirstPlayerWon = function() {
@@ -105,6 +106,7 @@ $( document ).ready(function() {
   var notifySecondPlayerWon = function() {
     socket.emit( 'second player won', {id:secondPlayer}, function() {
       $( '.result' ).text( 'You won :D' )
+      setTimeout( newGame, 1500 );
     } );
   }
 

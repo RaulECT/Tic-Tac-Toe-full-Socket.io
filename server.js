@@ -1,6 +1,9 @@
 var express = require('express');
 var http = require('http');
 var socket = require('socket.io');
+var debugLog = require( 'debug-log' )( 'foo' );
+
+debugLog('unicorns & rainbows');
 
 var app = express();
 var server = http.createServer(app);

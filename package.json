@@ -11,5 +11,8 @@
     "debug-log": "^1.0.1",
     "express": "*",
     "socket.io": "*"
+  },
+  "engines" : {
+    "node" : "6..2.1"
   }
 }

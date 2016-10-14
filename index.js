@@ -16,7 +16,11 @@ app.use("/js", express.static(__dirname + '/js'));
 
 server.listen(80, function(){
   console.log("Running on port 80");
-})
+});
+
+app.listen(process.env.PORT || 3000, function(){
+  console.log("j");
+});
 
 var io = socket.listen(server);
 

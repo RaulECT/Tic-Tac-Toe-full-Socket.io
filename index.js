@@ -14,11 +14,11 @@ var usersData = [];
 app.use("/css", express.static(__dirname + '/css'));
 app.use("/js", express.static(__dirname + '/js'));
 
-server.listen(80, function(){
+/*server.listen(3000, function(){
   console.log("Running on port 80");
-});
+});*/
 
-app.listen(process.env.PORT || 3000, function(){
+server.listen(process.env.PORT || 3000, function(){
   console.log("j");
 });
 

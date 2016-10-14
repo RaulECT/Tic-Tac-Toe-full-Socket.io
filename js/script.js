@@ -91,14 +91,25 @@ $( document ).ready(function() {
   } );
 
 
-  var notifyNoWinners = function() {
-    $( '.result' ).text( 'No winners :D' );
+
+  var newGame = function() {
+    $( ".result" ).text( '' );
+
+    Board.restartGame();
+
+    if ( opcion  == 'X') {
+      isMyTurn = true;
+    }else {
+      isMyTurn = false;
+    }
+
+    $( '.square' ).text( " " );
   }
 
-
-
-
-
+  var notifyNoWinners = function() {
+    $( '.result' ).text( 'No winners :D' );
+    setTimeout( newGame, 1500 );
+  }
 
 var Board = new function() {
 
@@ -113,6 +124,10 @@ var Board = new function() {
 
     console.log( positions.length );
   };
+
+  this.restartGame = function() {
+    positions = [ "1", "2", "3", "4", "5", "6", "7", "8", "9" ];
+  }
 
   this.verifyResults = function() {
     if ( positions.length == 0 ) {

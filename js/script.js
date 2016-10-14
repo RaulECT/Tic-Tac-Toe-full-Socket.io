@@ -91,14 +91,15 @@ $( document ).ready(function() {
   } );
 
   socket.on( 'you lose', function( data ) {
-    $( '.result' ).text( 'You lost D:' )
-    setTimeout( newGame, 1500 );
+    $( '.result' ).text( 'You lost D:' );
+    setTimeout( newGame, 3000 );
   } );
 
   var notifyFirstPlayerWon = function() {
 
     socket.emit( 'first player won', {id:secondPlayerId}, function( data ) {
-      $( '.result' ).text( 'You won :D' )
+      $( '.result' ).text( 'You won :D' );
+      setTimeout( newGame, 3000 );
     } );
 
   }
@@ -106,12 +107,13 @@ $( document ).ready(function() {
   var notifySecondPlayerWon = function() {
     socket.emit( 'second player won', {id:secondPlayer}, function() {
       $( '.result' ).text( 'You won :D' )
-      setTimeout( newGame, 1500 );
+      setTimeout( newGame, 3000 );
     } );
   }
 
   var newGame = function() {
     $( ".result" ).text( '' );
+    $( '.square' ).removeClass( 'square-winner' );
 
     Board.restartGame();
 
